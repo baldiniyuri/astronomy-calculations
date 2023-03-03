@@ -1,9 +1,9 @@
-from Variables.astronomy_variables import LIGHT_YEAR_KM, LIGHT_YEAR_METRES
+from Functions.spherical_trigonometry import start_trigonometry
 
 
 def main():
     print("Running...")
-    print(LIGHT_YEAR_METRES == LIGHT_YEAR_METRES)
+    start_trigonometry()
 
 if __name__ == '__main__':
     main()
