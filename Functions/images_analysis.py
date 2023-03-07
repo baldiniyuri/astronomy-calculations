@@ -1,7 +1,7 @@
 import cv2
 
 
-class ImagesAnalysis:
+class SpaceImagesAnalysis:
 
     def __init__(self, filename):
         self.filename = filename
@@ -80,6 +80,6 @@ def start_image_analysis():
     print("Please, enter the path of the file")
     file = input()
 
-    image_analysis = ImagesAnalysis(file)
+    image_analysis = SpaceImagesAnalysis(file)
     image_analysis.analyze_image()
     print("End of program.")
