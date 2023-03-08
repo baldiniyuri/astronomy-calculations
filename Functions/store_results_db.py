@@ -3,7 +3,7 @@ import numpy as np
 from Functions.zeta_training import Zeta
 
 
-class StoreResultsInDataBase:
+class AnalyzeAndStoreResultsInDataBase:
         def __init__(self, directory, dbfile):
             self.directory = directory
             self.dbfile = dbfile
@@ -40,3 +40,15 @@ class StoreResultsInDataBase:
                     pred = model.predict(features)[0]
                     cursor.execute("INSERT INTO results (filename, num_stars, pred_stars) VALUES (?, ?, ?)", (filename, num_stars, pred))
             self.disconnect_database(cursor)
+
+
+def start_zeta_analysis():
+    print("Image Analysis.")
+    print("Please, enter the path for the directory files.")
+    directory = input()
+    print("Please, enter the database path")
+    dbfile = input()
+
+    image_analysis = AnalyzeAndStoreResultsInDataBase(directory, dbfile)
+    image_analysis.analyze_images_and_store()
+    print("End of program.")
