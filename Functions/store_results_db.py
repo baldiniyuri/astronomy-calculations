@@ -42,13 +42,7 @@ class AnalyzeAndStoreResultsInDataBase:
             self.disconnect_database(cursor)
 
 
-def start_zeta_analysis():
-    print("Image Analysis.")
-    print("Please, enter the path for the directory files.")
-    directory = input()
-    print("Please, enter the database path")
-    dbfile = input()
-
+def start_zeta_analysis(directory, dbfile):
     image_analysis = AnalyzeAndStoreResultsInDataBase(directory, dbfile)
     image_analysis.analyze_images_and_store()
     print("End of program.")
