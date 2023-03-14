@@ -40,3 +40,12 @@ It converts astronomical units, like AU, Light years and parsecs, just enter the
 Calculate the distance between two latitudes and longitudes, you just need to enter the values and the radios (of the earth if you will).
 
 ```
+
+
+### Future Features
+```
+There is some functions that still under development, that includes Zeta (An AI that will be trained to detect more stars and with more fidelity).
+
+Backend, database and api under development.
+
+```
