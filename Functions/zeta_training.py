@@ -55,3 +55,11 @@ class Zeta:
         self.evaluate_performance(self, model, X_val, y_val)
 
 
+def zeta_init():
+    print("Zeta")
+    print("Please, enter the path of the directory.")
+    image_directory = str(input())
+
+    zeta_instance = Zeta(image_directory)
+    zeta_instance.analyze_images()
+    print("End of program...")

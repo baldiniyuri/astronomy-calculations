@@ -1,6 +1,6 @@
 from Functions.spherical_trigonometry import start_trigonometry
 from Functions.astronomy_calculations import start_astronomy_calculations
-from Functions.images_analysis import start_image_analysis
+from Functions.space_images_analysis import start_image_analysis 
 
 def main():
     print("Running...")
