@@ -113,6 +113,7 @@ class SpaceImagesAnalysisLearning(SpaceImagesAnalysis):
                 learning_model = LearningCalculation(x, weights, b, learning_rate)
 
                 mse = learning_model.mean_squared_error(y_true)
+                print(mse)
 
                 dw = np.dot(x, (2 * (learning_model.linear_function() - y_true)))
                 learning_model.update_weights(dw)
