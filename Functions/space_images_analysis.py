@@ -166,3 +166,5 @@ def start_image_analysis():
     print("End of program.")
     print(f"wights {weights}, bias {bias}, predict_num_stars {predicted_num_stars}")
     return weights, bias, predicted_num_stars
+
+    #test
