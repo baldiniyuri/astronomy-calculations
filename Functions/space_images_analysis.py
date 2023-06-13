@@ -1,51 +1,52 @@
 import cv2
 import numpy as np
+from typing import Union, List, Dict, Tuple
 import multiprocessing as mp
 from Functions.learning_calculations import LearningCalculation
 
 
 class SpaceImagesAnalysis:
 
-    def __init__(self, filename):
+    def __init__(self, filename) -> None:
         self.filename = filename
         self.images = []  
         self.labels = [] 
 
-    def open_image(self):
+    def open_image(self) -> str:
         return cv2.imread(self.filename)
     
 
-    def gray_converter(self, image):
+    def gray_converter(self, image) -> Union[np.ndarray, None]:
         return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 
-    def create_binary_image(self, gray):
+    def create_binary_image(self, gray) -> Union[np.ndarray, None]:
         ret, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
         return binary
     
 
-    def count_black_and_white_pixels(self, binary):
+    def count_black_and_white_pixels(self, binary: np.ndarray) -> Dict[str, int]:
         count_black_pixels = cv2.countNonZero(binary)
         count_white_pixels = binary.size - count_black_pixels
         return {'black': count_black_pixels, 'white': count_white_pixels}
 
 
-    def filter_size(self, contours):
+    def filter_size(self, contours: List[np.ndarray]) -> List[np.ndarray]:
         min_size = 3
         max_size = 30
         contours = [c for c in contours if len(c) >= min_size and len(c) <= max_size]
         return contours
 
 
-    def apply_binary_threshold(self, image):
+    def apply_binary_threshold(self, image: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
         return cv2.threshold(image, 200, 255, cv2.THRESH_BINARY)
     
 
-    def draw_contours(self, binary):
+    def draw_contours(self, binary: np.ndarray) -> Tuple[List[np.ndarray], np.ndarray]:
         return cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
 
-    def count_stars(self, image):
+    def count_stars(self, image: np.ndarray) -> Tuple[int, np.ndarray]:
         _, binary = self.apply_binary_threshold(image)
 
         contours, _ = self.draw_contours(binary)
@@ -57,14 +58,14 @@ class SpaceImagesAnalysis:
         return len(contours), result
         
 
-    def display_image(self, image, result_image):
+    def display_image(self, image: np.ndarray, result_image: np.ndarray) -> None:
         cv2.imshow("Original Image", image)
         cv2.imshow("Result Image", result_image)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
 
-    def analyze_image(self):
+    def analyze_image(self) -> int:
         image = self.open_image()
    
         gray = self.gray_converter(image)
@@ -82,7 +83,7 @@ class SpaceImagesAnalysis:
         return num_stars
     
 
-    def add_image(self):
+    def add_image(self) -> None:
         image = self.open_image()
 
         gray = self.gray_converter(image)
@@ -95,13 +96,13 @@ class SpaceImagesAnalysis:
         print(f"Images:{self.images}, Labels: {self.labels}")
 
 
-    def image_object_builder(self):
+    def image_object_builder(self) -> None:
         for i in self.images:
             print(i)
         
     
 class SpaceImagesAnalysisLearning(SpaceImagesAnalysis):
-    def train(self, num_epochs, learning_rate):
+    def train(self, num_epochs: int, learning_rate: float) -> Tuple[np.ndarray, np.ndarray]:
         weights = np.random.randn(1, 1) 
         b = np.zeros((1, 1))
 
@@ -124,7 +125,7 @@ class SpaceImagesAnalysisLearning(SpaceImagesAnalysis):
         return weights, b
     
 
-def analyze_image_multiprocessing(file, learning_rate):
+def analyze_image_multiprocessing(file: str, learning_rate: float) -> Tuple[np.ndarray, np.ndarray, float]:
 
     image_analysis = SpaceImagesAnalysisLearning(file)
 
@@ -150,7 +151,7 @@ def analyze_image_multiprocessing(file, learning_rate):
 
 
 
-def start_image_analysis():
+def start_image_analysis() -> Tuple[np.ndarray, np.ndarray, float]:
     print("Image Analysis.")
     print("Please, enter the path of the file")
     file = input()
@@ -167,4 +168,4 @@ def start_image_analysis():
     print(f"wights {weights}, bias {bias}, predict_num_stars {predicted_num_stars}")
     return weights, bias, predicted_num_stars
 
-    #test
+    
