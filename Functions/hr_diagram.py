@@ -2,11 +2,11 @@ import matplotlib.pyplot as plt
 
 
 class HertzsprungRussell:
-    def __init__(self, temperature: float, luminosity:float):
+    def __init__(self, temperature: float, luminosity:float) -> None:
         self.temperature = temperature
         self.luminosity = luminosity
 
-    def plot_HR_diagram(self):
+    def plot_HR_diagram(self) -> None:
         plt.figure(figsize=(8, 8))
         plt.scatter(self.temperature, self.luminosity, c='black', s=5, alpha=0.5)
         plt.gca().invert_xaxis()
@@ -16,7 +16,7 @@ class HertzsprungRussell:
         plt.show()
 
 
-def start_hr_diagram():
+def start_hr_diagram() -> None:
     temperature = [5000, 6000, 7000, 8000, 9000, 10000]
     luminosity = [0.1, 0.5, 1, 3, 10, 30]
 
