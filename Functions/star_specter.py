@@ -1,13 +1,15 @@
 from Variables.astronomy_variables import ELEMENTS
+from typing import List
+
 
 class StarSpecter:
 
-    def __init__(self, kelvin_temperature: float):
+    def __init__(self, kelvin_temperature: float) -> None:
         self.kelvin = kelvin_temperature
         self.elements_list = []
     
     
-    def check_elements(self):
+    def check_elements(self) -> List[str]:
         if self.kelvin >= 20001:
             self.elements_list.append(ELEMENTS[0])
             self.elements_list.append(ELEMENTS[1])
