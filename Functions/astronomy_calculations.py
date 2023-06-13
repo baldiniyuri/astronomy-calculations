@@ -3,39 +3,39 @@ import math
 
 class AstronomyCalculations():
 
-    def __init__(self, au: float, ly: float, parsec: float):
+    def __init__(self, au: float, ly: float, parsec: float) -> None:
         self.astronomical_unity = au
         self.light_year = ly
         self.parsec = parsec
 
     
-    def Light_Year_To_Kilometers(self):
+    def Light_Year_To_Kilometers(self) -> float:
         formula = Fraction(9.461e+12)
         return formula * self.light_year
     
 
-    def Astronomical_Unity_To_Light_Year(self):
+    def Astronomical_Unity_To_Light_Year(self) -> float:
         formula = 63240
         return formula * self.astronomical_unity
     
 
-    def Astronomical_Unity_To_Parsec(self):
+    def Astronomical_Unity_To_Parsec(self) -> float:
         formula = 206300
         return formula / self.parsec
     
 
-    def binary_star_mass(a, p):
+    def binary_star_mass(a, p) -> float:
         G = 6.67430e-11 
         m = 4 * math.pi**2 * a**3 / (G * p**2)
         return m
     
 
-    def convert_period_to_seconds(self, period:int):
+    def convert_period_to_seconds(self, period:int) -> float:
         return period * 365.25 * 24 * 3600 
 
 
 
-def start_astronomy_calculations():
+def start_astronomy_calculations() -> None:
     print("Astronomy Calculations.")
     print("Please, enter a value for Astronomical Units.")
     au = float(input())
