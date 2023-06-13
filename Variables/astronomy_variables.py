@@ -8,3 +8,5 @@ ASTRONOMICAL_UNIT_KM = 150000000
 PARSEC = 0.0000048481 # Equals 1 Astronomical unit
 
 ELEMENTS = ["Hydrogen", "Helium", "Carbon", "Iron", "Calcium", "Sodium", "Magnesium", "Oxygen"]
+
+
