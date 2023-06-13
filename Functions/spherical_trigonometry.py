@@ -4,7 +4,7 @@ import math
 class SphericalTrigonometry:
 
 
-    def __init__(self, lat1: float, lon1: float, lat2: float, lon2: float, radius: float):
+    def __init__(self, lat1: float, lon1: float, lat2: float, lon2: float, radius: float) -> None:
         self.latitude_1 = math.radians(lat1)
         self.latitude_2 = math.radians(lat2)
         self.longitude_1 = math.radians(lon1)
@@ -12,7 +12,7 @@ class SphericalTrigonometry:
         self.radius = radius
     
 
-    def angle_calculator(self):
+    def angle_calculator(self) -> float:
         difference_latitude = self.latitude_1 - self.latitude_2
         difference_longitude = self.longitude_1 - self.longitude_2
 
@@ -23,7 +23,7 @@ class SphericalTrigonometry:
         return central_angle
     
 
-    def haversine_distance(self):
+    def haversine_distance(self) -> float:
         central_angle = self.angle_calculator()
 
         distance = self.radius * central_angle
@@ -32,7 +32,7 @@ class SphericalTrigonometry:
     
 
 
-def start_trigonometry():
+def start_trigonometry() -> None:
     print("Spherical Trigonometry")
     print("Please, enter with first latitude.")
     latitude_1 = float(input())
