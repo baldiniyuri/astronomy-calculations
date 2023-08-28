@@ -2,7 +2,7 @@ import numpy as np
 
 
 class LearningCalculation:
-    def __init__(self, x: float, w: float, b: float, learning_rate: float):
+    def __init__(self, x: float, w: float, b: float, learning_rate: float) -> None:
         self.x = x.reshape(1, -1)
         self.w = w
         self.b = b
@@ -13,7 +13,7 @@ class LearningCalculation:
         z = np.matmul(self.w, self.x.T) + self.b
         return z
 
-    def linear_function(self):
+    def linear_function(self) -> float:
         # f(x) = y = 2x - 2
         y = 2 * self.x - 2
         return y
